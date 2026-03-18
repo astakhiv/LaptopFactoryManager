@@ -1,9 +1,9 @@
-package com.myn0name.Model.Factories;
+package com.myn0name.Model.Builders;
 
 import com.myn0name.Model.Products.Product;
 
-/** Factory */
-public interface Factory {
+/** Builder */
+public interface Builder {
   public String getName();
 
   public void setProductName(String productName);

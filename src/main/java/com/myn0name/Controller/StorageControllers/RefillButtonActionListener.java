@@ -1,6 +1,6 @@
 package com.myn0name.Controller.StorageControllers;
 
-import com.myn0name.Model.Factories.Factory;
+import com.myn0name.Model.Builders.Builder;
 import com.myn0name.Model.Products.Product;
 import com.myn0name.Model.Storages.Storage;
 import java.awt.event.ActionEvent;
@@ -9,9 +9,9 @@ import java.awt.event.ActionListener;
 /** RefillButtonActionListener */
 public class RefillButtonActionListener<T extends Product> implements ActionListener {
   private Storage<T> storage;
-  private Factory factory;
+  private Builder factory;
 
-  public RefillButtonActionListener(Storage<T> storage, Factory factory) {
+  public RefillButtonActionListener(Storage<T> storage, Builder factory) {
     this.storage = storage;
     this.factory = factory;
   }

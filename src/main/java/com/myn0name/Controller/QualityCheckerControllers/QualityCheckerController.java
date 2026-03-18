@@ -1,6 +1,6 @@
 package com.myn0name.Controller.QualityCheckerControllers;
 
-import com.myn0name.Model.Factories.QualityChecker;
+import com.myn0name.Model.Builders.QualityChecker;
 import com.myn0name.Model.Products.Laptop;
 import com.myn0name.Model.Storages.Storage;
 import com.myn0name.View.QualityCheckerView;

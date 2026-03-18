@@ -1,19 +1,19 @@
-package com.myn0name.Model.Factories;
+package com.myn0name.Model.Builders;
 
 import com.myn0name.Model.Products.Keyboard;
 import com.myn0name.Model.Products.Product;
 import java.util.Random;
 
-/** KeyboardFactory */
-public class KeyboardFactory implements Factory {
+/** KeyboardBuilder */
+public class KeyboardBuilder implements Builder {
   private Keyboard keyboard;
   private String name;
   private String productName;
   private String color;
   private String language;
 
-  public KeyboardFactory() {
-    this.name = "Keyboard Factory";
+  public KeyboardBuilder() {
+    this.name = "Keyboard Builder";
 
     this.productName = null;
     this.color = null;

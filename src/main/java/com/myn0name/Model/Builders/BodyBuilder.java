@@ -1,19 +1,19 @@
-package com.myn0name.Model.Factories;
+package com.myn0name.Model.Builders;
 
 import com.myn0name.Model.Products.Body;
 import com.myn0name.Model.Products.Product;
 import java.util.Random;
 
-/** BodyFactory */
-public class BodyFactory implements Factory {
+/** BodyBuilder */
+public class BodyBuilder implements Builder {
   private Body body;
   private String name;
   private String productName;
   private String material;
   private String color;
 
-  public BodyFactory() {
-    this.name = "Body Factory";
+  public BodyBuilder() {
+    this.name = "Body Builder";
 
     this.productName = null;
     this.material = null;

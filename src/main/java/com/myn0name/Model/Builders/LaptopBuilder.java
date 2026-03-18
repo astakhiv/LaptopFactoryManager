@@ -1,4 +1,4 @@
-package com.myn0name.Model.Factories;
+package com.myn0name.Model.Builders;
 
 import com.myn0name.Model.Machines.Line;
 import com.myn0name.Model.Machines.RobotArm;
@@ -8,8 +8,8 @@ import com.myn0name.Model.Products.Keyboard;
 import com.myn0name.Model.Products.Laptop;
 import com.myn0name.Model.Products.Product;
 
-/** LaptopFactory */
-public class LaptopFactory implements Factory {
+/** LaptopBuilder */
+public class LaptopBuilder implements Builder {
 
   public static class OfficialQualityChecker implements QualityChecker {
     private String name;
@@ -49,10 +49,10 @@ public class LaptopFactory implements Factory {
   private Keyboard keyboard;
   private Body body;
 
-  public LaptopFactory(RobotArm robotArm, Line line) {
+  public LaptopBuilder(RobotArm robotArm, Line line) {
     this.robotArm = robotArm;
     this.line = line;
-    this.name = "Laptop Factory";
+    this.name = "Laptop Builder";
   }
 
   public void setProductName(String productName) {

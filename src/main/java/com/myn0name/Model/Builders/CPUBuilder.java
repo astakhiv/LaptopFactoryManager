@@ -1,18 +1,18 @@
-package com.myn0name.Model.Factories;
+package com.myn0name.Model.Builders;
 
 import com.myn0name.Model.Products.CPU;
 import com.myn0name.Model.Products.Product;
 import java.util.Random;
 
-/** CPUFactory */
-public class CPUFactory implements Factory {
+/** CPUBuilder */
+public class CPUBuilder implements Builder {
   private CPU cpu;
   private String name;
   private String productName;
   private int numberOfCores;
 
-  public CPUFactory() {
-    this.name = "CPU Factory";
+  public CPUBuilder() {
+    this.name = "CPU Builder";
 
     this.productName = null;
     this.numberOfCores = 0;

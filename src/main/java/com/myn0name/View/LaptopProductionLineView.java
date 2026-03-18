@@ -6,13 +6,13 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-/** LaptopFactoryView */
-public class LaptopFactoryView extends JPanel {
+/** LaptopProductionLineView */
+public class LaptopProductionLineView extends JPanel {
   private JLabel name;
   private JLabel message;
   private JButton produce;
 
-  public LaptopFactoryView() {
+  public LaptopProductionLineView() {
     setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
     this.name = new JLabel();
