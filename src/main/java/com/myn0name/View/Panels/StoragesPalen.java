@@ -27,12 +27,12 @@ public class StoragesPalen extends JPanel {
     StorageView bodyStorageView = new StorageView();
     StorageView keyboardStorageView = new StorageView();
 
-    StorageController cpuStorageController =
-        new StorageController(cpuStorageView, cpuStorage, cpuFactory);
-    StorageController bodyStorageController =
-        new StorageController(bodyStorageView, bodyStorage, bodyFactory);
-    StorageController keyboardStorageController =
-        new StorageController(keyboardStorageView, keyboardStorage, keyboardFactory);
+    StorageController<CPU> cpuStorageController =
+        new StorageController<>(cpuStorageView, cpuStorage, cpuFactory);
+    StorageController<Body> bodyStorageController =
+        new StorageController<>(bodyStorageView, bodyStorage, bodyFactory);
+    StorageController<Keyboard> keyboardStorageController =
+        new StorageController<>(keyboardStorageView, keyboardStorage, keyboardFactory);
 
     this.add(cpuStorageView);
     this.add(bodyStorageView);

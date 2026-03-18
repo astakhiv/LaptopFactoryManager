@@ -31,7 +31,7 @@ public class QualityCheckerController {
           public void actionPerformed(ActionEvent e) {
             try {
               qualityCheckerView.setMessage(
-                  qualityChecker.AssesQuality((Laptop) laptopStorage.getProduct()));
+                  qualityChecker.AssesQuality((Laptop) laptopStorage.seeProduct()));
             } catch (Exception err) {
               qualityCheckerView.setMessage(err.getMessage());
             }

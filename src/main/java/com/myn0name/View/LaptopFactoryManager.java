@@ -41,8 +41,7 @@ public class LaptopFactoryManager {
     this.keyboardStorage = new Storage<>("Keyboard Storage");
     this.bodyStorage = new Storage<>("Body Storage");
     this.laptopStorage = new Storage<>("laptopStorage");
-    this.laptopFactory =
-        new LaptopFactory(robotArm, line, cpuStorage, keyboardStorage, bodyStorage);
+    this.laptopFactory = new LaptopFactory(robotArm, line);
     this.cpuFactory = new CPUFactory();
     cpuFactory.setNumberOfCores(8);
     this.bodyFactory = new BodyFactory();
@@ -90,8 +89,8 @@ public class LaptopFactoryManager {
     qualityCheckers.add(friendQualityChecker);
 
     frame.add(new MachinesPanel(robotArm, line));
-    frame.add(new LaptopFactoryPanel(laptopFactory, laptopStorage));
-    frame.add(new QualityCheckersPannel(qualityCheckers, laptopFactory));
+    frame.add(new LaptopFactoryPanel(laptopFactory, laptopStorage, cpuStorage, bodyStorage, keyboardStorage));
+    frame.add(new QualityCheckersPannel(qualityCheckers, laptopStorage));
     frame.add(
         new StoragesPalen(
             cpuStorage, keyboardStorage, bodyStorage, cpuFactory, keyboardFactory, bodyFactory));

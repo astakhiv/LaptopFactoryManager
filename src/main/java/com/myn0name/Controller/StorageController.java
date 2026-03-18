@@ -7,14 +7,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import com.myn0name.Model.Products.Product;
 
 /** StorageController */
-public class StorageController {
+public class StorageController<T extends Product> {
   private StorageView storageView;
-  private Storage storage;
+  private Storage<T> storage;
   private Factory factory;
 
-  public StorageController(StorageView storageView, Storage storage, Factory factory) {
+  public StorageController(StorageView storageView, Storage<T> storage, Factory factory) {
     this.storageView = storageView;
     this.storage = storage;
     this.factory = factory;
@@ -41,7 +42,7 @@ public class StorageController {
           public void actionPerformed(ActionEvent e) {
             for (int i = storage.getNumberOfItemsAvailable(); i < 10; i++) {
               factory.produce();
-              storage.addProduct(factory.getProduct());
+              storage.addProduct((T) factory.getProduct());
             }
           }
         };

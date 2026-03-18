@@ -29,7 +29,6 @@ public class RobotArm extends Machine {
     }
 
     this.setState("Working");
-    this.durability -= 10;
-    // this.durability -= random.nextInt(11);
+    this.durability -= random.nextInt(11);
   }
 }
