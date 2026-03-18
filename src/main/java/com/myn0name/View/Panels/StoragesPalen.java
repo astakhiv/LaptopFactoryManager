@@ -1,6 +1,6 @@
 package com.myn0name.View.Panels;
 
-import com.myn0name.Controller.StorageController;
+import com.myn0name.Controller.StorageControllers.StorageController;
 import com.myn0name.Model.Factories.BodyFactory;
 import com.myn0name.Model.Factories.CPUFactory;
 import com.myn0name.Model.Factories.KeyboardFactory;

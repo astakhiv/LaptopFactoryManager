@@ -1,13 +1,13 @@
-package com.myn0name.Controller;
+package com.myn0name.Controller.StorageControllers;
 
 import com.myn0name.Model.Factories.Factory;
+import com.myn0name.Model.Products.Product;
 import com.myn0name.Model.Storages.Storage;
 import com.myn0name.View.StorageView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import com.myn0name.Model.Products.Product;
 
 /** StorageController */
 public class StorageController<T extends Product> {

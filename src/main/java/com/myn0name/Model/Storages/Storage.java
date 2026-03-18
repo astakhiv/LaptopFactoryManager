@@ -21,16 +21,16 @@ public class Storage<T extends Product> {
     return name;
   }
 
-  public Product seeProduct() {
+  public T seeProduct() {
     if (this.products.isEmpty()) {
       throw new IndexOutOfBoundsException(
           String.format("No products in the %s currently available", this.name));
     }
-    
-    return this.products.get(this.products.size()-1);
+
+    return this.products.get(this.products.size() - 1);
   }
 
-  public Product getProduct() {
+  public T getProduct() {
     if (this.products.isEmpty()) {
       throw new IndexOutOfBoundsException(
           String.format("No products in the %s currently available", this.name));

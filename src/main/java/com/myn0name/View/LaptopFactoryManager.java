@@ -89,7 +89,9 @@ public class LaptopFactoryManager {
     qualityCheckers.add(friendQualityChecker);
 
     frame.add(new MachinesPanel(robotArm, line));
-    frame.add(new LaptopFactoryPanel(laptopFactory, laptopStorage, cpuStorage, bodyStorage, keyboardStorage));
+    frame.add(
+        new LaptopFactoryPanel(
+            laptopFactory, laptopStorage, cpuStorage, bodyStorage, keyboardStorage));
     frame.add(new QualityCheckersPannel(qualityCheckers, laptopStorage));
     frame.add(
         new StoragesPalen(

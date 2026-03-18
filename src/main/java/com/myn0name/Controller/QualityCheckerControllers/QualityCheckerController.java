@@ -1,4 +1,4 @@
-package com.myn0name.Controller;
+package com.myn0name.Controller.QualityCheckerControllers;
 
 import com.myn0name.Model.Factories.QualityChecker;
 import com.myn0name.Model.Products.Laptop;

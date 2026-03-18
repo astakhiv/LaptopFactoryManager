@@ -1,12 +1,11 @@
-package com.myn0name.Controller;
+package com.myn0name.Controller.MachineControllers;
 
+import com.myn0name.Model.Machines.Machine;
+import com.myn0name.View.MachineView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-
-import com.myn0name.Model.Machines.Machine;
-import com.myn0name.View.MachineView;
 
 /** MachineController */
 public class MachineController {

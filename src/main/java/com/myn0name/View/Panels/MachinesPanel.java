@@ -1,11 +1,10 @@
 package com.myn0name.View.Panels;
 
-import javax.swing.JPanel;
-
-import com.myn0name.Controller.MachineController;
+import com.myn0name.Controller.MachineControllers.MachineController;
 import com.myn0name.Model.Machines.Line;
 import com.myn0name.Model.Machines.RobotArm;
 import com.myn0name.View.MachineView;
+import javax.swing.JPanel;
 
 /** MachinesPanel */
 public class MachinesPanel extends JPanel {
