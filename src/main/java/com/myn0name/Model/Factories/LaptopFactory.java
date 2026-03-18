@@ -7,9 +7,7 @@ import com.myn0name.Model.Products.CPU;
 import com.myn0name.Model.Products.Keyboard;
 import com.myn0name.Model.Products.Laptop;
 import com.myn0name.Model.Products.Product;
-import com.myn0name.Model.Storages.BodyStorage;
-import com.myn0name.Model.Storages.CPUStorage;
-import com.myn0name.Model.Storages.KeyboardStorage;
+import com.myn0name.Model.Storages.Storage;
 
 /** LaptopFactory */
 public class LaptopFactory implements Factory {
@@ -17,10 +15,11 @@ public class LaptopFactory implements Factory {
   private Laptop laptop;
   private RobotArm robotArm;
   private Line line;
-  private CPUStorage cpuStorage;
-  private KeyboardStorage keyboardStorage;
-  private BodyStorage bodyStorage;
+  private Storage<CPU> cpuStorage;
+  private Storage<Keyboard> keyboardStorage;
+  private Storage<Body> bodyStorage;
 
+  private String productName;
   private CPU cpu;
   private Keyboard keyboard;
   private Body body;
@@ -28,9 +27,9 @@ public class LaptopFactory implements Factory {
   public LaptopFactory(
       RobotArm robotArm,
       Line line,
-      CPUStorage cpuStorage,
-      KeyboardStorage keyboardStorage,
-      BodyStorage bodyStorage) {
+      Storage<CPU> cpuStorage,
+      Storage<Keyboard> keyboardStorage,
+      Storage<Body> bodyStorage) {
     this.robotArm = robotArm;
     this.line = line;
     this.name = "Laptop Factory";
@@ -38,6 +37,10 @@ public class LaptopFactory implements Factory {
     this.cpuStorage = cpuStorage;
     this.keyboardStorage = keyboardStorage;
     this.bodyStorage = bodyStorage;
+  }
+
+  public void setProductName(String productName) {
+    this.productName = productName;
   }
 
   public String getName() {
@@ -72,7 +75,7 @@ public class LaptopFactory implements Factory {
     }
   }
 
-  public void produce(String name) {
+  public void produce() {
 
     try {
       getCPU();
@@ -86,7 +89,7 @@ public class LaptopFactory implements Factory {
 
     float quality = (cpu.getQuality() + keyboard.getQuality() + body.getQuality()) / 3;
 
-    this.laptop = new Laptop(name, quality, cpu, keyboard, body);
+    this.laptop = new Laptop(productName, quality, cpu, keyboard, body);
     this.cpu = null;
     this.keyboard = null;
     this.body = null;

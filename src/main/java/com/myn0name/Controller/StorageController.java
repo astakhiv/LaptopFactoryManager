@@ -1,5 +1,6 @@
 package com.myn0name.Controller;
 
+import com.myn0name.Model.Factories.Factory;
 import com.myn0name.Model.Storages.Storage;
 import com.myn0name.View.StorageView;
 import java.awt.event.ActionEvent;
@@ -11,10 +12,12 @@ import java.beans.PropertyChangeListener;
 public class StorageController {
   private StorageView storageView;
   private Storage storage;
+  private Factory factory;
 
-  public StorageController(StorageView storageView, Storage storage) {
+  public StorageController(StorageView storageView, Storage storage, Factory factory) {
     this.storageView = storageView;
     this.storage = storage;
+    this.factory = factory;
 
     this.storageView.setName(storage.getName());
     this.storageView.setNumberOfProducts(getNumberOfItemsString());
@@ -36,7 +39,10 @@ public class StorageController {
     ActionListener actionListener =
         new ActionListener() {
           public void actionPerformed(ActionEvent e) {
-            storage.reFillProducts();
+            for (int i = storage.getNumberOfItemsAvailable(); i < 10; i++) {
+              factory.produce();
+              storage.addProduct(factory.getProduct());
+            }
           }
         };
     this.storageView.setRefillButtonActionListener(actionListener);

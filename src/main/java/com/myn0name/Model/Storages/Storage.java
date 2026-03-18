@@ -2,16 +2,49 @@ package com.myn0name.Model.Storages;
 
 import com.myn0name.Model.Products.Product;
 import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+import java.util.ArrayList;
+import java.util.List;
 
 /** Storage */
-public interface Storage {
-  public String getName();
+public class Storage<T extends Product> {
+  private final PropertyChangeSupport pcs = new PropertyChangeSupport(this);
+  private List<T> products;
+  private String name;
 
-  public Product getProduct();
+  public Storage(String name) {
+    this.products = new ArrayList<>();
+    this.name = name;
+  }
 
-  public void reFillProducts();
+  public String getName() {
+    return name;
+  }
 
-  public void addPropertyChangeListener(PropertyChangeListener listener);
+  public Product getProduct() {
+    if (this.products.isEmpty()) {
+      throw new IndexOutOfBoundsException(
+          String.format("No products in the %s currently available", this.name));
+    }
 
-  public int getNumberOfItemsAvailable();
+    T product = this.products.remove(products.size() - 1);
+
+    this.pcs.firePropertyChange("product number", this.products.size() + 1, this.products.size());
+
+    return product;
+  }
+
+  public void addProduct(T product) {
+    this.products.add(product);
+
+    this.pcs.firePropertyChange("product number", this.products.size(), this.products.size() - 1);
+  }
+
+  public void addPropertyChangeListener(PropertyChangeListener listener) {
+    this.pcs.addPropertyChangeListener(listener);
+  }
+
+  public int getNumberOfItemsAvailable() {
+    return this.products.size();
+  }
 }

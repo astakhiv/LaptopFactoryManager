@@ -1,13 +1,17 @@
 package com.myn0name.View;
 
+import com.myn0name.Model.Factories.BodyFactory;
+import com.myn0name.Model.Factories.CPUFactory;
+import com.myn0name.Model.Factories.KeyboardFactory;
 import com.myn0name.Model.Factories.LaptopFactory;
 import com.myn0name.Model.Factories.QualityChecker;
 import com.myn0name.Model.Machines.Line;
 import com.myn0name.Model.Machines.RobotArm;
+import com.myn0name.Model.Products.Body;
+import com.myn0name.Model.Products.CPU;
+import com.myn0name.Model.Products.Keyboard;
 import com.myn0name.Model.Products.Laptop;
-import com.myn0name.Model.Storages.BodyStorage;
-import com.myn0name.Model.Storages.CPUStorage;
-import com.myn0name.Model.Storages.KeyboardStorage;
+import com.myn0name.Model.Storages.Storage;
 import com.myn0name.View.Panels.LaptopFactoryPanel;
 import com.myn0name.View.Panels.MachinesPanel;
 import com.myn0name.View.Panels.QualityCheckersPannel;
@@ -20,20 +24,33 @@ import javax.swing.JFrame;
 /** LaptopFactoryManager */
 public class LaptopFactoryManager {
   private LaptopFactory laptopFactory;
-  private CPUStorage cpuStorage;
-  private KeyboardStorage keyboardStorage;
-  private BodyStorage bodyStorage;
+  private CPUFactory cpuFactory;
+  private BodyFactory bodyFactory;
+  private KeyboardFactory keyboardFactory;
+  private Storage<CPU> cpuStorage;
+  private Storage<Keyboard> keyboardStorage;
+  private Storage<Body> bodyStorage;
+  private Storage<Laptop> laptopStorage;
   private RobotArm robotArm;
   private Line line;
 
   public LaptopFactoryManager() {
     this.robotArm = new RobotArm(100, "LaptopFactory");
     this.line = new Line(100, "LaptopFactory");
-    this.cpuStorage = new CPUStorage();
-    this.keyboardStorage = new KeyboardStorage();
-    this.bodyStorage = new BodyStorage();
+    this.cpuStorage = new Storage<>("CPU Storage");
+    this.keyboardStorage = new Storage<>("Keyboard Storage");
+    this.bodyStorage = new Storage<>("Body Storage");
+    this.laptopStorage = new Storage<>("laptopStorage");
     this.laptopFactory =
         new LaptopFactory(robotArm, line, cpuStorage, keyboardStorage, bodyStorage);
+    this.cpuFactory = new CPUFactory();
+    cpuFactory.setNumberOfCores(8);
+    this.bodyFactory = new BodyFactory();
+    bodyFactory.setColor("Silver");
+    bodyFactory.setMaterial("Aluminium");
+    this.keyboardFactory = new KeyboardFactory();
+    keyboardFactory.setColor("Black");
+    keyboardFactory.setLanguage("en-us");
   }
 
   public void startUI() {
@@ -73,9 +90,11 @@ public class LaptopFactoryManager {
     qualityCheckers.add(friendQualityChecker);
 
     frame.add(new MachinesPanel(robotArm, line));
-    frame.add(new LaptopFactoryPanel(laptopFactory));
+    frame.add(new LaptopFactoryPanel(laptopFactory, laptopStorage));
     frame.add(new QualityCheckersPannel(qualityCheckers, laptopFactory));
-    frame.add(new StoragesPalen(cpuStorage, keyboardStorage, bodyStorage));
+    frame.add(
+        new StoragesPalen(
+            cpuStorage, keyboardStorage, bodyStorage, cpuFactory, keyboardFactory, bodyFactory));
 
     frame.pack();
 

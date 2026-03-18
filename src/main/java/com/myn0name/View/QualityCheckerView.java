@@ -1,21 +1,19 @@
 package com.myn0name.View;
 
 import java.awt.event.ActionListener;
-
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-/**
- * QualityCheckerView
- */
+/** QualityCheckerView */
 public class QualityCheckerView extends JPanel {
   private JLabel name;
   private JLabel message;
   private JButton check;
 
-
   public QualityCheckerView() {
+    setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     this.name = new JLabel();
     this.message = new JLabel();
     this.check = new JButton("Check");
