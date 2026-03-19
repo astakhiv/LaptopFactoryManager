@@ -4,7 +4,9 @@ import com.myn0name.Model.Builders.BodyBuilder;
 import com.myn0name.Model.Builders.CPUBuilder;
 import com.myn0name.Model.Builders.KeyboardBuilder;
 import com.myn0name.Model.Builders.LaptopBuilder;
-import com.myn0name.Model.Builders.QualityChecker;
+import com.myn0name.Model.QualityCheckers.FriendQualityChecker;
+import com.myn0name.Model.QualityCheckers.OfficialQualityChecker;
+import com.myn0name.Model.QualityCheckers.QualityChecker;
 import com.myn0name.Model.LaptopProductionLine;
 import com.myn0name.Model.Machines.Line;
 import com.myn0name.Model.Machines.RobotArm;
@@ -52,9 +54,12 @@ public class LaptopProductionLineManager {
     this.keyboardBuilder = new KeyboardBuilder();
     keyboardBuilder.setColor("Black");
     keyboardBuilder.setLanguage("en-us");
-    this.laptopProductionLine =
-        new LaptopProductionLine(
-            laptopBuilder, cpuStorage, bodyStorage, keyboardStorage, laptopStorage);
+    this.laptopProductionLine = new LaptopProductionLine.LaptopProductionLineBuilder()
+      .laptopBuilder(laptopBuilder)
+      .bodyStorage(bodyStorage)
+      .cpuStorage(cpuStorage)
+      .laptopStorage(laptopStorage)
+      .keyboardStorage(keyboardStorage).build();
   }
 
   public void startUI() {
@@ -64,30 +69,8 @@ public class LaptopProductionLineManager {
     frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
     frame.setLayout(new GridLayout(1, 3));
 
-    LaptopBuilder.OfficialQualityChecker officialQualityChecker =
-        new LaptopBuilder.OfficialQualityChecker();
-    QualityChecker friendQualityChecker =
-        new QualityChecker() {
-          public String AssesQuality(Laptop laptop) {
-            if (laptop == null) {
-              throw new NullPointerException("No Laptop was provided.");
-            }
-
-            float quality = laptop.getQuality();
-
-            if (quality >= 0.9) {
-              return "WHERE DID U FIND THAT";
-            } else if (quality >= 0.5) {
-              return "Just... Perfect!..";
-            } else {
-              return "Well, I may run Minecraft on that... I guess...";
-            }
-          }
-
-          public String getName() {
-            return "Friend's Quality Checker";
-          }
-        };
+    OfficialQualityChecker officialQualityChecker = new OfficialQualityChecker();
+    FriendQualityChecker friendQualityChecker = new FriendQualityChecker();
 
     List<QualityChecker> qualityCheckers = new ArrayList<>();
     qualityCheckers.add(officialQualityChecker);

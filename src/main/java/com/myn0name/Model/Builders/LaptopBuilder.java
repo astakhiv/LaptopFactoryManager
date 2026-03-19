@@ -6,39 +6,9 @@ import com.myn0name.Model.Products.Body;
 import com.myn0name.Model.Products.CPU;
 import com.myn0name.Model.Products.Keyboard;
 import com.myn0name.Model.Products.Laptop;
-import com.myn0name.Model.Products.Product;
 
 /** LaptopBuilder */
-public class LaptopBuilder implements Builder {
-
-  public static class OfficialQualityChecker implements QualityChecker {
-    private String name;
-
-    public OfficialQualityChecker() {
-      this.name = "OfficialQualityChecker";
-    }
-
-    public String AssesQuality(Laptop laptop) {
-      if (laptop == null) {
-        throw new NullPointerException("No Laptop was provided.");
-      }
-
-      float quality = laptop.getQuality();
-
-      if (quality >= 0.9) {
-        return "High";
-      } else if (quality >= 0.7) {
-        return "Medium";
-      } else {
-        return "Low";
-      }
-    }
-
-    public String getName() {
-      return this.name;
-    }
-  }
-
+public class LaptopBuilder implements Builder<Laptop> {
   private String name;
   private Laptop laptop;
   private RobotArm robotArm;
@@ -79,7 +49,7 @@ public class LaptopBuilder implements Builder {
     this.body = null;
   }
 
-  public Product getProduct() {
+  public Laptop getProduct() {
     return this.laptop;
   }
 

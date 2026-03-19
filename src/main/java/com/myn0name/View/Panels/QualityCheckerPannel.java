@@ -1,8 +1,8 @@
 package com.myn0name.View.Panels;
 
 import com.myn0name.Controller.QualityCheckerControllers.QualityCheckerController;
-import com.myn0name.Model.Builders.QualityChecker;
 import com.myn0name.Model.Products.Laptop;
+import com.myn0name.Model.QualityCheckers.QualityChecker;
 import com.myn0name.Model.Storages.Storage;
 import com.myn0name.View.QualityCheckerView;
 import javax.swing.BoxLayout;

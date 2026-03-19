@@ -7,12 +7,12 @@ import com.myn0name.View.StorageView;
 
 /** StorageController */
 public class StorageController<T extends Product> {
-  public StorageController(StorageView storageView, Storage<T> storage, Builder factory) {
+  public StorageController(StorageView storageView, Storage<T> storage, Builder<T> builder) {
     storageView.setName(storage.getName());
     storageView.setNumberOfProducts(
         String.format("Number of items: %d", storage.getNumberOfItemsAvailable()));
 
-    storageView.setRefillButtonActionListener(new RefillButtonActionListener<T>(storage, factory));
+    storageView.setRefillButtonActionListener(new RefillButtonActionListener<T>(storage, builder));
     storage.addPropertyChangeListener(new StorageProperyChangeListener<T>(storage, storageView));
   }
 }

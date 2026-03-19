@@ -1,4 +1,4 @@
-package com.myn0name.Model.Builders;
+package com.myn0name.Model.QualityCheckers;
 
 import com.myn0name.Model.Products.Laptop;
 

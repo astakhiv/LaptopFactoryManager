@@ -16,32 +16,70 @@ public class LaptopProductionLine {
   private Storage<Laptop> laptopStorage;
   private String name;
 
-  public LaptopProductionLine(
-      LaptopBuilder laptopBuilder,
-      Storage<CPU> cpuStorage,
-      Storage<Body> bodyStorage,
-      Storage<Keyboard> keyboardStorage,
-      Storage<Laptop> laptopStorage) {
+  public static class LaptopProductionLineBuilder {
+    private LaptopBuilder laptopBuilder;
+    private Storage<CPU> cpuStorage;
+    private Storage<Body> bodyStorage;
+    private Storage<Keyboard> keyboardStorage;
+    private Storage<Laptop> laptopStorage;
+
+    public LaptopProductionLine build() {
+      return new LaptopProductionLine(this);
+    }
+
+    public LaptopProductionLineBuilder laptopBuilder(LaptopBuilder laptopBuilder) {
+      this.laptopBuilder = laptopBuilder;
+      return this;
+    }
+
+    public LaptopProductionLineBuilder cpuStorage(Storage<CPU> cpuStorage) {
+      this.cpuStorage = cpuStorage;
+      return this;
+    }
+
+    
+    public LaptopProductionLineBuilder bodyStorage(Storage<Body> bodyStorage) {
+      this.bodyStorage = bodyStorage;
+      return this;
+    }
+
+    public LaptopProductionLineBuilder laptopStorage(Storage<Laptop> laptopStorage) {
+      this.laptopStorage = laptopStorage;
+      return this;
+    }
+
+    public LaptopProductionLineBuilder keyboardStorage(Storage<Keyboard> keyboardStorage) {
+      this.keyboardStorage = keyboardStorage;
+      return this;
+    }
+  }
+
+  public LaptopProductionLine(LaptopProductionLineBuilder laptopProductionLineBuilder) {
     this.name = "Laptop Production Line";
-    this.laptopBuilder = laptopBuilder;
-    this.laptopStorage = laptopStorage;
-    this.cpuStorage = cpuStorage;
-    this.bodyStorage = bodyStorage;
-    this.keyboardStorage = keyboardStorage;
+    this.laptopBuilder = laptopProductionLineBuilder.laptopBuilder;
+    this.laptopStorage = laptopProductionLineBuilder.laptopStorage;
+    this.cpuStorage = laptopProductionLineBuilder.cpuStorage;
+    this.bodyStorage = laptopProductionLineBuilder.bodyStorage;
+    this.keyboardStorage = laptopProductionLineBuilder.keyboardStorage;
   }
 
   public void produce() {
     try {
       laptopBuilder.setProductName("The Best Laptop");
-      if (laptopBuilder.needCPU()) laptopBuilder.setCPU((CPU) cpuStorage.getProduct());
+      if (laptopBuilder.needCPU()) {
+        laptopBuilder.setCPU(cpuStorage.getProduct());
+      }
 
-      if (laptopBuilder.needBody()) laptopBuilder.setBody((Body) bodyStorage.getProduct());
+      if (laptopBuilder.needBody()) {
+        laptopBuilder.setBody(bodyStorage.getProduct());
+      }
 
-      if (laptopBuilder.needKeyboard())
-        laptopBuilder.setKeyboard((Keyboard) keyboardStorage.getProduct());
+      if (laptopBuilder.needKeyboard()) {
+        laptopBuilder.setKeyboard(keyboardStorage.getProduct());
+      }
 
       laptopBuilder.produce();
-      laptopStorage.addProduct((Laptop) laptopBuilder.getProduct());
+      laptopStorage.addProduct(laptopBuilder.getProduct());
 
     } catch (Exception e) {
       throw e;

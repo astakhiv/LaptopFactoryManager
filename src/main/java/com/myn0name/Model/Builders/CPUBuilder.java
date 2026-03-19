@@ -1,11 +1,10 @@
 package com.myn0name.Model.Builders;
 
 import com.myn0name.Model.Products.CPU;
-import com.myn0name.Model.Products.Product;
 import java.util.Random;
 
 /** CPUBuilder */
-public class CPUBuilder implements Builder {
+public class CPUBuilder implements Builder<CPU> {
   private CPU cpu;
   private String name;
   private String productName;
@@ -35,7 +34,7 @@ public class CPUBuilder implements Builder {
     this.numberOfCores = numberOfCores;
   }
 
-  public Product getProduct() {
+  public CPU getProduct() {
     return this.cpu;
   }
 

@@ -1,11 +1,10 @@
 package com.myn0name.Model.Builders;
 
 import com.myn0name.Model.Products.Keyboard;
-import com.myn0name.Model.Products.Product;
 import java.util.Random;
 
 /** KeyboardBuilder */
-public class KeyboardBuilder implements Builder {
+public class KeyboardBuilder implements Builder<Keyboard> {
   private Keyboard keyboard;
   private String name;
   private String productName;
@@ -33,7 +32,7 @@ public class KeyboardBuilder implements Builder {
     this.productName = productName;
   }
 
-  public Product getProduct() {
+  public Keyboard getProduct() {
     return this.keyboard;
   }
 

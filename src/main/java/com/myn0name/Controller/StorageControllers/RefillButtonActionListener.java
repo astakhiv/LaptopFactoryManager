@@ -9,17 +9,17 @@ import java.awt.event.ActionListener;
 /** RefillButtonActionListener */
 public class RefillButtonActionListener<T extends Product> implements ActionListener {
   private Storage<T> storage;
-  private Builder factory;
+  private Builder<T> builder;
 
-  public RefillButtonActionListener(Storage<T> storage, Builder factory) {
+  public RefillButtonActionListener(Storage<T> storage, Builder<T> builder) {
     this.storage = storage;
-    this.factory = factory;
+    this.builder = builder;
   }
 
   public void actionPerformed(ActionEvent e) {
     for (int i = storage.getNumberOfItemsAvailable(); i < 10; i++) {
-      factory.produce();
-      storage.addProduct((T) factory.getProduct());
+      builder.produce();
+      storage.addProduct(builder.getProduct());
     }
   }
 }

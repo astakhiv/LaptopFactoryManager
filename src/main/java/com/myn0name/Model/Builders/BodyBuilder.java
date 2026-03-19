@@ -1,11 +1,10 @@
 package com.myn0name.Model.Builders;
 
 import com.myn0name.Model.Products.Body;
-import com.myn0name.Model.Products.Product;
 import java.util.Random;
 
 /** BodyBuilder */
-public class BodyBuilder implements Builder {
+public class BodyBuilder implements Builder<Body> {
   private Body body;
   private String name;
   private String productName;
@@ -41,7 +40,7 @@ public class BodyBuilder implements Builder {
     this.color = color;
   }
 
-  public Product getProduct() {
+  public Body getProduct() {
     return this.body;
   }
 

@@ -6,6 +6,9 @@ public class Keyboard extends Product {
 
   public Keyboard(String name, float quality, String color, String language) {
     super(name, "Keyboard", quality);
+
+    this.color = color;
+    this.language = language;
   }
 
   public String getColor() {
