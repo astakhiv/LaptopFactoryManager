@@ -12,6 +12,11 @@ import com.myn0name.Model.Builders.LaptopBuilder;
 import com.myn0name.Model.QualityCheckers.FriendQualityChecker;
 import com.myn0name.Model.QualityCheckers.OfficialQualityChecker;
 import com.myn0name.Model.QualityCheckers.QualityChecker;
+import com.myn0name.Controller.LaptopProductionLineControllers.ProduceActionListener;
+import com.myn0name.Controller.MachineControllers.MachinePropertyChangeListener;
+import com.myn0name.Controller.MachineControllers.MaintenanceActionListener;
+import com.myn0name.Controller.QualityCheckerControllers.CheckActionListener;
+import com.myn0name.Controller.StorageControllers.RefillButtonActionListener;
 import com.myn0name.Model.LaptopProductionLine;
 import com.myn0name.Model.Machines.Line;
 import com.myn0name.Model.Machines.RobotArm;
@@ -95,8 +100,20 @@ public class App {
             laptopFactoryManager.addPanel(storagesPalen);
 
             // Controller setup
-            robotArm.addPropertyChangeListener(new MachinePropertyChangeListener(machine, machineView));
-            robotArmView.setMaintainActionListener(new MaintenanceActionListener(machine));
+            robotArm.addPropertyChangeListener(new MachinePropertyChangeListener(robotArm, robotArmView));
+            robotArmView.setMaintainActionListener(new MaintenanceActionListener(robotArm));
+
+            line.addPropertyChangeListener(new MachinePropertyChangeListener(line, lineView));
+            lineView.setMaintainActionListener(new MaintenanceActionListener(line));
+
+            laptopProductionLineView.setProduceActionListener(new ProduceActionListener(laptopProductionLine, laptopProductionLineView));
+
+            officialQualityCheckerView.setCheckActionListener(new CheckActionListener(officialQualityChecker, laptopStorage, officialQualityCheckerView));
+            friendQualityCheckerView.setCheckActionListener(new CheckActionListener(friendQualityChecker, laptopStorage, friendQualityCheckerView));
+
+            cpuStorageView.setRefillButtonActionListener(new RefillButtonActionListener<>(cpuStorage, cpuBuilder));
+            bodyStorageView.setRefillButtonActionListener(new RefillButtonActionListener<>(bodyStorage, bodyBuilder));
+            keyboardStorageView.setRefillButtonActionListener(new RefillButtonActionListener<>(keyboardStorage, keyboardBuilder));
 
             laptopFactoryManager.startUI();
           }
