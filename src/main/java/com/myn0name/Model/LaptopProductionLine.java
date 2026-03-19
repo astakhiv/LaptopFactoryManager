@@ -37,7 +37,6 @@ public class LaptopProductionLine {
       return this;
     }
 
-    
     public LaptopProductionLineBuilder bodyStorage(Storage<Body> bodyStorage) {
       this.bodyStorage = bodyStorage;
       return this;

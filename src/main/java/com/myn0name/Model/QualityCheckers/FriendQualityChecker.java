@@ -2,9 +2,7 @@ package com.myn0name.Model.QualityCheckers;
 
 import com.myn0name.Model.Products.Laptop;
 
-/**
- * FriendQualityChecker
- */
+/** FriendQualityChecker */
 public class FriendQualityChecker implements QualityChecker {
   private String name;
 
@@ -21,7 +19,7 @@ public class FriendQualityChecker implements QualityChecker {
 
     if (quality >= 0.9) {
       return "WHERE DID U FIND THAT";
-    } else if (quality >= 0.5) {
+    } else if (quality >= 0.7) {
       return "Just... Perfect!..";
     } else {
       return "Well, I may run Minecraft on that... I guess...";

@@ -18,7 +18,7 @@ public class OfficialQualityChecker implements QualityChecker {
 
     if (quality >= 0.9) {
       return "High";
-    } else if (quality >= 0.7) {
+    } else if (quality >= 0.8) {
       return "Medium";
     } else {
       return "Low";

@@ -5,10 +5,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 /** LaptopProductionLineManager */
-public class LaptopProductionLineManager {
+public class LaptopProductionLineManagerView {
   private JFrame frame;
 
-  public LaptopProductionLineManager() {
+  public LaptopProductionLineManagerView() {
     this.frame = new JFrame("LaptopBuilderManager");
   }
 
